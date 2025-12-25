@@ -1,4 +1,4 @@
-name: Sandy CI Pratical
+name: Sandy First CI
 on:
   push:
     branches:
