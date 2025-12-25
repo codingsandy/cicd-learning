@@ -4,7 +4,7 @@ on:
     branches: main
   
 jobs:
-  build:
+  build: 
     runs-on: ubuntu-latest
 
     steps: 
@@ -14,5 +14,10 @@ jobs:
     - name: show files
       run: ls -l
 
-    - name: Build step
-      run: echo "Building the project..."
+    - name:  Build step
+          run: echo "Building the project..."
+echo     # Add your build commands here
+
+    - name: Test step
+      run: echo "Running tests..."
+      # Add your test commands here
