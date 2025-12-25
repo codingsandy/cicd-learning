@@ -4,11 +4,9 @@ on:
     branches:
       - main
 jobs:
-  build
-  run-tests:
+  build:
     runs-on: ubuntu-latest
     
     steps:
       -name: Say Hello
        run: echo "Hello, World! CI/CD is awesome!"
-       
