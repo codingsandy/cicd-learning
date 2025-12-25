@@ -1,0 +1,14 @@
+name: Sandy CI Pratical
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build
+  run-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      -name: Say Hello
+       run: echo "Hello, World! CI/CD is awesome!"
+       
