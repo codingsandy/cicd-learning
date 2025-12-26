@@ -10,14 +10,12 @@ jobs:
     steps: 
     - name: Checkout code
       uses: actions/checkout@v4
-
-    - name: show files
-      run: ls -l
-
-    - name: build step
-      run: echo "Building the project..."
-      # Add your build commands here
-
-    - name: Test step
-      run: echo "Running tests..."
-      # Add your test commands here
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        pip install pytest
+        run |
+         pytest app
