@@ -14,9 +14,9 @@ jobs:
     - name: show files
       run: ls -l
 
-    - name:  Build step
-          run: echo "Building the project..."
-echo     # Add your build commands here
+    - name: build step
+      run: echo "Building the project..."
+      # Add your build commands here
 
     - name: Test step
       run: echo "Running tests..."
