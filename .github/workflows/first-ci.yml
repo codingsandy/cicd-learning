@@ -16,3 +16,7 @@
           run: |
             echo "App Name: $APP_NAME"
             echo "Owner: $OWNER"
+        - name: Use secret
+          run: |
+            echo "DB password is ${{ secrets.DB_PASSWORD }}"
+
