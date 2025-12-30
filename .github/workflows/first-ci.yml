@@ -1,22 +1,27 @@
-  name: Day 3  CI with Env Variables
+#Day 5 Multiple metrix build and test
+name: Day 5 - Multiple Metrics Build and Test
+on:
+  push:
+    branches: ["main"]
 
-  on:
-    push:
-      branches: [main]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
 
-  env:
-      APP_NAME: cicd-learning
-      OWNER: Sandy
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
 
-  jobs:
-    env-demo:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Print Environment Variables
-          run: |
-            echo "App Name: $APP_NAME"
-            echo "Owner: $OWNER"
-        - name: Use secret
-          run: |
-            echo "DB password is ${{ secrets.DB_PASSWORD }}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
+      - name: Install dependencies
+        run : npm install
+
+      - name: Run tests
+        run: npm test
