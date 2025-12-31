@@ -1,27 +1,23 @@
-#Day 5 Multiple metrix build and test
-name: Day 5 - Multiple Metrics Build and Test
+name: Day 6 Cache & Artifacts
 on:
   push:
-    branches: ["main"]
-
+    branches: [ "main" ]
 jobs:
-  build-test:
-    runs-on: ubuntu-latest
+      build-test:
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16, 18, 20]
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+            
+          - name: Set up node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: '18'
+              cache: 'npm'
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
+          - name: install dependencies
+            run: npm install
 
-      - name: Install dependencies
-        run : npm install
-
-      - name: Run tests
-        run: npm test
+          - name: Run tests
+            run: npm test
